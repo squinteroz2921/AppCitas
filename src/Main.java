@@ -20,24 +20,53 @@ import java.util.Map.Entry;
 import java.util.stream.Stream;
 
 public class Main {
-    BarberService barberServiceImplement = new BarberServiceImplement();
-    BarberShopService barberShopServiceImplement = new BarbersShopServiceImplement();
-    ClientService clientServiceImplement = new ClientServiceImplement();
-    MeetService meetServiceImplement= new MeetServiceImplement();
+    private static final BarberService barberServiceImplement = new BarberServiceImplement();
+    private static final BarberShopService barberShopServiceImplement = new BarbersShopServiceImplement();
+    private static final ClientService clientServiceImplement = new ClientServiceImplement();
+    private static final MeetService meetServiceImplement = new MeetServiceImplement();
 
     public static void main(String[] args) {
+
+        Object specializationObjectbarber1 = new Object();
+        boolean eleccion = true;
+
         //Implementacion de los metodos de la Barberia//////
         Scanner userInput = new Scanner(System.in);
         System.out.println(" por favor ingrese el id del barbero");
-        String idbarber1=userInput.nextLine();
+        Long idbarber1 = userInput.nextLong();
+        userInput.nextLine();
         System.out.println(" por favor ingrese el nombre del barbero");
-        String nombrebarber1=userInput.nextLine();
+        String nombrebarber1 = userInput.nextLine();
+
         System.out.println(" por favor ingrese el nickname del barbero");
-        String nicknamebarber1=userInput.nextLine();
+        String nicknamebarber1 = userInput.nextLine();
+
+        do {
+            //System.console().flush();
+            System.out.println(" por favor ingrese la especializacion del barbero");
+            String specializationbarber1 = userInput.nextLine();
+            specializationbarber1 = specializationbarber1.toUpperCase();
+
+            switch (specializationbarber1) {
+                case "BARBA" -> {
+                    specializationObjectbarber1 = Specialization.BARBA;
+                    eleccion = false;
+                }
+                case "CORTE" -> {
+                    specializationObjectbarber1 = Specialization.CORTE;
+                    eleccion = false;
+                }
+                case "BARBA CORTE" -> {
+                    specializationObjectbarber1 = Specialization.BARBA_CORTE;
+                    eleccion = false;
+                }
+                default -> System.out.println("Ingresaste una especializacion errada!\n" +
+                                              "Las opciones son BARBA, CORTE, BARBA CORTE\n");
+            }
+        } while (eleccion);
 
 
-
-        Barber barber1=new Barber();
+        barberServiceImplement.createBarber(new Barber(idbarber1, nombrebarber1, nicknamebarber1, (Specialization) specializationObjectbarber1));
 
 //        BarberService barberServiceImplement=new BarberServiceImplement();
 //        barberServiceImplement.createBarber(1l,"Sebastiao","lol",Specialization.BARBA_CORTE);
@@ -54,7 +83,6 @@ public class Main {
         Client client2 = new Client(2L, "DaniDani", "3009876543");
 
 
-
         HashMap<Long, Barber> mapTest = new HashMap<>();
         mapTest.put(1l, barber1);
         mapTest.put(2l, barber2);
@@ -65,7 +93,6 @@ public class Main {
         for (Map.Entry<Long, Barber> entry : mapTest.entrySet()) {
             System.out.println(entry.getKey() + ";" + entry.getValue());
         }
-
 
 
     }
