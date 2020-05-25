@@ -49,10 +49,11 @@ public class MeetServiceImplement implements MeetService {
                                 "especialización debido a que no se encuentra en la lista");
                     }
                 case "barber":
-                    Barber barber= new Barber(MeetHashMap.get(id).getBarber());
+                    Barber barber=MeetHashMap.get(id).getBarber();
                     System.out.println("//////////////////////////////////////");
                     System.out.println("Actualizando lista...");
                     barber.setName(update);
+                    System.out.println(barber.toString());
                     break;
                 case "client":
                     Client client = new Client(MeetHashMap.get(id).getClient());

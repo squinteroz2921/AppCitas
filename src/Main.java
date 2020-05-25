@@ -12,9 +12,7 @@ import service.implement.BarberServiceImplement;
 import service.implement.BarbersShopServiceImplement;
 import service.implement.ClientServiceImplement;
 import service.implement.MeetServiceImplement;
-//import service.BarberService;
-//import service.implement.BarberServiceImplement;
-//import service.implement.BarbersShopServiceImplement;
+
 
 import java.lang.reflect.Field;
 import java.sql.ClientInfoStatus;
@@ -52,9 +50,11 @@ public class Main {
         System.out.println("////////////////////////////");
         System.out.println("Creando Cita..");
         meetServiceImplement.createMeet(new Meet(1l, new Date(120, 4, 25, 10, 30),
-                (barberServiceImplement.listBarber().get(1)), (clientServiceImplement.listClient().get(1)),
+                (barberServiceImplement.listBarber().get(1)), (clientServiceImplement.listClient().get(0)),
                 DateType.MAÑANA));
         meetServiceImplement.showListMeet();
+//        meetServiceImplement.updateMeet(1l,"barber","Sebastiao");
+//        meetServiceImplement.showListMeet();
 
 //        for (Map.Entry<Long, Barber> entry : mapTest.entrySet()) {
 //            System.out.println(entry.getKey() + ";" + entry.getValue());
