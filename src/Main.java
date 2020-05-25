@@ -28,6 +28,17 @@ public class Main {
     public static void main(String[] args) {
         //Implementacion de los metodos de la Barberia//////
         Scanner userInput = new Scanner(System.in);
+        System.out.println(" por favor ingrese el id del barbero");
+        String idbarber1=userInput.nextLine();
+        System.out.println(" por favor ingrese el nombre del barbero");
+        String nombrebarber1=userInput.nextLine();
+        System.out.println(" por favor ingrese el nickname del barbero");
+        String nicknamebarber1=userInput.nextLine();
+
+
+
+        Barber barber1=new Barber();
+
 //        BarberService barberServiceImplement=new BarberServiceImplement();
 //        barberServiceImplement.createBarber(1l,"Sebastiao","lol",Specialization.BARBA_CORTE);
 //        barberServiceImplement.createBarber(2l,"Danielao","lolazo",Specialization.BARBA_CORTE);
