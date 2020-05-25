@@ -11,7 +11,7 @@ public class Barber {
 
     //Constructores de la clase
 
-    public Barber() {
+    public Barber(Barber barber) {
     }
 
     public Barber(long id, String name, String nickname, Specialization specialization) {

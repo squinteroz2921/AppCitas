@@ -7,7 +7,7 @@ public class Client {
     private String cellphone;
 
     // Se crea el constructor Vacio
-    public Client() {
+    public Client(Client client) {
 
     }
 
