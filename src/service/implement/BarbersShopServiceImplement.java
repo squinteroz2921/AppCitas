@@ -55,7 +55,7 @@ public class BarbersShopServiceImplement implements BarberShopService {
     @Override
     public void deleteBarberShop(long id) {
         System.out.println("//////////////////////////////////////");
-        System.out.println("Eliminando Barbero de la lista...");
+        System.out.println("Eliminando Barberia de la lista...");
         if (searchListBarber(id)) {
             barbershopHashMap.remove(id);
             showListBarberShop();
