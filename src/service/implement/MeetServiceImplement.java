@@ -1,10 +1,9 @@
 package service.implement;
 
 import domains.Barber;
-import domains.Barbershop;
+import domains.Client;
 import domains.Meet;
 import ennumerations.DateType;
-import ennumerations.Specialization;
 import service.MeetService;
 import java.util.Date;
 import java.text.ParseException;
@@ -12,6 +11,7 @@ import java.text.SimpleDateFormat;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MeetServiceImplement implements MeetService {
     HashMap<Long, Meet> MeetHashMap = new HashMap<>();
@@ -47,7 +47,21 @@ public class MeetServiceImplement implements MeetService {
                     } else {
                         System.out.println("No se ha podido Actualizar el atributo " +
                                 "especialización debido a que no se encuentra en la lista");
-                    }default:
+                    }
+                case "barber":
+                    Barber barber= new Barber(MeetHashMap.get(id).getBarber());
+                    System.out.println("//////////////////////////////////////");
+                    System.out.println("Actualizando lista...");
+                    barber.setName(update);
+                    break;
+                case "client":
+                    Client client = new Client(MeetHashMap.get(id).getClient());
+                    System.out.println("//////////////////////////////////////");
+                    System.out.println("Actualizando lista...");
+                    client.setName(update);
+                    break;
+
+                default:
                     System.out.println("//////////////////////////////////////");
                     System.out.println("No se ha podido Actualizar el atributo " +
                             "debido a que no es un atributo del Object");
