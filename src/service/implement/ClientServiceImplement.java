@@ -1,10 +1,14 @@
 package service.implement;
 
+import domains.Barber;
 import domains.Barbershop;
 import domains.Client;
 import service.ClientService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClientServiceImplement implements ClientService {
 
@@ -65,6 +69,13 @@ public class ClientServiceImplement implements ClientService {
         System.out.println("Mostrando Lista de Clientes...");
         ClientHashMap.forEach((k, v) -> System.out.println("key: " + k + " value:" + v));
     }
+
+    @Override
+    public List<Client> listClient() {
+        List<Client> clientList = new ArrayList<Client>(ClientHashMap.values().stream().collect(Collectors.toList()));
+        return clientList;
+    }
+
     public Boolean searchListBarber(Long id) {
         if (ClientHashMap.get(id) == null) {
             return false; // el id ingresado no es valido

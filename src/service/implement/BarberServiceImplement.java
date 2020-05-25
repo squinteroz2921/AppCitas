@@ -8,7 +8,9 @@ import service.BarberService;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BarberServiceImplement implements BarberService {
@@ -33,39 +35,39 @@ public class BarberServiceImplement implements BarberService {
     @Override
     public void updateBarber(long id, String atributo, String update) {
         if (searchListBarber(id)) {
-        Barber barber = barberHashMap.get(id); // se obtiene el valor segun la clave ingresada
-        switch (atributo) {
-            case "nombre":
-                System.out.println("//////////////////////////////////////");
-                System.out.println("Actualizando lista...");
-                barber.setName(update);
-                break;
-            case "nickname":
-                System.out.println("//////////////////////////////////////");
-                System.out.println("Actualizando lista...");
-                barber.setNickname(update);
-                break;
+            Barber barber = barberHashMap.get(id); // se obtiene el valor segun la clave ingresada
+            switch (atributo) {
+                case "nombre":
+                    System.out.println("//////////////////////////////////////");
+                    System.out.println("Actualizando lista...");
+                    barber.setName(update);
+                    break;
+                case "nickname":
+                    System.out.println("//////////////////////////////////////");
+                    System.out.println("Actualizando lista...");
+                    barber.setNickname(update);
+                    break;
 
-            case "specialization":
-                System.out.println("//////////////////////////////////////");
-                System.out.println("Actualizando lista...");
-                if (atributo.equals("BARBA")) {
-                    barber.setSpecialization(Specialization.BARBA);
-                } else if (atributo.equals("CORTE")) {
-                    barber.setSpecialization(Specialization.CORTE);
-                } else if (atributo.equals("BARBA_CORTE")) {
-                    barber.setSpecialization(Specialization.BARBA_CORTE);
-                } else {
+                case "specialization":
+                    System.out.println("//////////////////////////////////////");
+                    System.out.println("Actualizando lista...");
+                    if (atributo.equals("BARBA")) {
+                        barber.setSpecialization(Specialization.BARBA);
+                    } else if (atributo.equals("CORTE")) {
+                        barber.setSpecialization(Specialization.CORTE);
+                    } else if (atributo.equals("BARBA_CORTE")) {
+                        barber.setSpecialization(Specialization.BARBA_CORTE);
+                    } else {
+                        System.out.println("No se ha podido Actualizar el atributo " +
+                                "especialización debido a que no se encuentra en la lista");
+                    }
+                    break;
+                default:
+                    System.out.println("//////////////////////////////////////");
                     System.out.println("No se ha podido Actualizar el atributo " +
-                            "especialización debido a que no se encuentra en la lista");
-                }
-                break;
-            default:
-                System.out.println("//////////////////////////////////////");
-                System.out.println("No se ha podido Actualizar el atributo " +
-                        "debido a que no es un atributo del Object");
-        }
-        }else{
+                            "debido a que no es un atributo del Object");
+            }
+        } else {
             System.out.println("//////////////////////////////////////");
             System.out.println("No se ha podido Actualizar el atributo");
         }
@@ -126,6 +128,12 @@ public class BarberServiceImplement implements BarberService {
             System.out.println("el id ingresado " + id +
                     " no es valido, no se puede eliminar de la lista");
         }
+    }
+
+    @Override
+    public List<Barber> listBarber() {
+        List<Barber> barberList = new ArrayList<Barber>(barberHashMap.values().stream().collect(Collectors.toList()));
+        return barberList;
     }
 
 
