@@ -1,9 +1,10 @@
 package service;
 
+import domains.Client;
+
 public interface ClientService {
-    void createClient();
-    void searchCLient();
-    void updateClient();
-    void deleteClient();
+    void createClient(Client client);
+    void updateClient(long id, String atributo, String update);
+    void deleteClient(long id);
     void showListClient();
 }

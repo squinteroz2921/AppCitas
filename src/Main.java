@@ -4,10 +4,14 @@ import ennumerations.Specialization;
 //import service.implement.BarberServiceImplement;
 //import service.implement.BarbersShopServiceImplement;
 
-import java.util.HashMap;
+import java.lang.reflect.Field;
+import java.sql.ClientInfoStatus;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFieldException {
         //Implementacion de los metodos de la Barberia//////
 //        BarberService barberServiceImplement=new BarberServiceImplement();
 //        barberServiceImplement.createBarber(1l,"Sebastiao","lol",Specialization.BARBA_CORTE);
@@ -26,7 +30,17 @@ public class Main {
         mapTest.put(2l,barber2);
         mapTest.put(3l,barber3);
         System.out.println(mapTest.keySet());
+        System.out.println("///////////////");
+        System.out.println(mapTest.entrySet());
+        for (Map.Entry<Long,Barber> entry:mapTest.entrySet()){
+            System.out.println(entry.getKey()+";"+entry.getValue());
+        }
+
+
+
+
+        }
 
 
     }
-}
+

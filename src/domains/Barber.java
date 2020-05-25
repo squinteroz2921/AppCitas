@@ -68,4 +68,5 @@ public class Barber {
                 ", specialization='" + specialization + '\'' +
                 '}';
     }
+
 }
