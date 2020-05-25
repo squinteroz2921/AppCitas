@@ -1,4 +1,5 @@
 import domains.Barber;
+import domains.Client;
 import ennumerations.Specialization;
 import service.BarberService;
 import service.BarberShopService;
@@ -38,6 +39,10 @@ public class Main {
         Barber barber2 = new Barber(2l, "B", "B", Specialization.BARBA);
         Barber barber3 = new Barber(3l, "C", "C", Specialization.BARBA);
 
+        Client client1 = new Client(1L, "SebaSeba", "3001234567");
+        Client client2 = new Client(2L, "DaniDani", "3009876543");
+
+
 
         HashMap<Long, Barber> mapTest = new HashMap<>();
         mapTest.put(1l, barber1);
@@ -49,6 +54,7 @@ public class Main {
         for (Map.Entry<Long, Barber> entry : mapTest.entrySet()) {
             System.out.println(entry.getKey() + ";" + entry.getValue());
         }
+
 
 
     }
