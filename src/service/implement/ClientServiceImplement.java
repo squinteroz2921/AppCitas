@@ -13,7 +13,7 @@ public class ClientServiceImplement implements ClientService {
     @Override
     public void createClient(Client client) {
         System.out.println("//////////////////////////////////////");
-        System.out.println("Creando Barbero...");
+        System.out.println("Creando Cliente...");
         ClientHashMap.put(client.getId(), client);
         System.out.println(ClientHashMap.get(client.getId()));
     }
@@ -49,7 +49,7 @@ public class ClientServiceImplement implements ClientService {
     @Override
     public void deleteClient(long id) {
         System.out.println("//////////////////////////////////////");
-        System.out.println("Eliminando Barbero de la lista...");
+        System.out.println("Eliminando Cliente de la lista...");
         if (searchListBarber(id)) {
             ClientHashMap.remove(id);
             showListClient();
@@ -62,7 +62,7 @@ public class ClientServiceImplement implements ClientService {
     @Override
     public void showListClient() {
         System.out.println("//////////////////////////////////////");
-        System.out.println("Mostrando Lista de Barberos...");
+        System.out.println("Mostrando Lista de Clientes...");
         ClientHashMap.forEach((k, v) -> System.out.println("key: " + k + " value:" + v));
     }
     public Boolean searchListBarber(Long id) {
